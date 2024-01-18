@@ -13,7 +13,27 @@ class Pares:
             self.listaNum.append(self.num)
 
         self.listaNum.sort()
-        print(self.listaNum)
+        print("Lista completa:", self.listaNum)
+
+        pares = [num for num in self.listaNum if num % 2 == 0]
+        impares = [num for num in self.listaNum if num % 2 != 0]
+
+        print("Números pares:", pares)
+        print("Números impares:", impares)
+
+
+        repeticiones = {}
+        for num in set(self.listaNum):
+            cantidad = self.listaNum.count(num)
+            if cantidad > 1:
+                repeticiones[num] = cantidad
+
+        if repeticiones:
+            print("Números que se repiten y cantidad de repeticiones:")
+            for num, cantidad in repeticiones.items():
+                print(f"{num}: {cantidad} veces")
+        else:
+            print("Ningún número se repite.")
 
 
 
