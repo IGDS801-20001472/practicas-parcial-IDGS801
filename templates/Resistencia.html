@@ -1,0 +1,87 @@
+{% extends 'layout3_Resistencia.html' %}
+
+{% block content %}
+    
+    {% import 'macros.html' as macros%}
+
+    <form action="" method="POST">
+
+        <label>Color 1:</label>
+    <select id="colores" name="color1">
+        <option value="0">Negro</option>
+        <option value="1">Cafe</option>
+        <option value="2">Rojo</option>
+        <option value="3">Naranja</option>
+        <option value="4">Amarillo</option>
+        <option value="5">Verde</option>
+        <option value="6">Azul</option>
+        <option value="7">Violeta</option>
+        <option value="8">Gris</option>
+        <option value="9">Blanco</option>
+    </select>
+
+    <label>Color 2:</label>
+    <select id="colores" name="color2">
+        <option value="0">Negro</option>
+        <option value="1">Cafe</option>
+        <option value="2">Rojo</option>
+        <option value="3">Naranja</option>
+        <option value="4">Amarillo</option>
+        <option value="5">Verde</option>
+        <option value="6">Azul</option>
+        <option value="7">Violeta</option>
+        <option value="8">Gris</option>
+        <option value="9">Blanco</option>
+    </select>
+
+
+    <label>Color 3:</label>
+    <select id="colores" name="color3">
+        <option value="1">Negro</option>
+        <option value="10">Cafe</option>
+        <option value="100">Rojo</option>
+        <option value="1000">Naranja</option>
+        <option value="10000">Amarillo</option>
+        <option value="100000">Verde</option>
+        <option value="1000000">Azul</option>
+        <option value="10000000">Violeta</option>
+        <option value="100000000">Gris</option>
+        <option value="1000000000">Blanco</option>
+    </select>
+<br>
+    <label>Tolerancia:</label>
+        <input type="radio" value="Oro" name="tolerancia">Oro
+        <input type="radio" value="Plata" name="tolerancia">Plata
+<br><br>
+        <input type="submit">
+    </form>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Color 1</th>
+                    <th>Color 2</th>
+                    <th>Color 3</th>
+                    <th>Tolerancia</th>
+                    <th>Valor</th>
+                    <th>Valor Máximo</th>
+                    <th>Valor Mínimo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="background-color: {{Ccolor1}}">{{colorT1}}</td>
+                    <td style="background-color: {{Ccolor2}}">{{colorT2}}</td>
+                    <td style="background-color: {{Ccolor3}}">{{colorT3}}</td>
+                    <td style="background-color: {{CcolorT}};">{{tipoTol}}</td>
+                    <td>{{valor}}</td>
+                    <td>{{valorMax}}</td>
+                    <td>{{valorMin}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+{% endblock %}

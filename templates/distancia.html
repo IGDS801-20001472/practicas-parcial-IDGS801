@@ -1,0 +1,21 @@
+{% extends 'layout2.html' %}
+
+
+
+        {% block container %}
+        {% import "macros.html" as macros%}
+        
+        
+
+            <form action="" method="POST">
+                {{macros.datos("p1c1","PUNTO 1 COORDENADA 1")}}
+                {{macros.datos("p2c1","PUNTO 2 COORDENADA 1")}}
+                {{macros.datos("p1c2", "PUNTO 1 COORDENADA 2")}}
+                {{macros.datos("p2c2", "PUNTO 2 COORDENADA 2")}}
+                <input type="submit">
+            </form>
+        
+            <h1>Distancia: {{resultado}}</h1>
+
+        {% endblock %}
+            

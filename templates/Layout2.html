@@ -40,21 +40,9 @@
     </div>
 
     <div class="container">
-        {% block content %}
-        <h1>Calcular</h1>
-        <form action="/resultado" method="POST">
-            <label>N1</label>
-            <input type="text" name="n1"></input><br>
-            <label>N2</label>
-            <input type="text" name="n2"></input><br>
-            <input type="submit">
-
-            <input type="radio" name="opcion" value="sum">Suma
-            <input type="radio" name="opcion" value="res">Resta
-            <input type="radio" name="opcion" value="div">Division
-            <input type="radio" name="opcion" value="mul">Multiplicacion
-        </form>
-        {%endblock%}
+        {% block container %}
+            
+        {% endblock %}
     </div>
 
 </body>
