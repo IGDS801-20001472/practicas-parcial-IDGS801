@@ -2,12 +2,69 @@ from flask import Flask, render_template, request
 from math import sqrt
 import formulario
 import formulario_resistencia
+import formularioDic
+import formIdioma
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("layout3_Resistencia.html")
+    return render_template("layout2.html")
+
+
+@app.route("/diccionario", methods= ["GET", "POST"])
+def translate():
+    DiccionarioClass = formularioDic.Diccionario(request.form)
+    palabraE = ''
+    palabraI = ''
+    
+    if request.method == "POST":
+        palabraE = request.form.get("palabraE")
+        palabraI = request.form.get("palabraI")
+
+        aTraducciones = open('aTraducciones.txt', 'a')
+        aTraducciones.write("\n{}  \n{}".format(palabraE.upper(), palabraI.upper()))
+        aTraducciones.close()  
+
+    return render_template("traduccion.html", form = DiccionarioClass, palabraE = palabraE, palabraI = palabraI)
+    
+
+@app.route("/Buscar", methods =["GET", "POST"])
+def Search():
+    BuscarClass = formIdioma.Buscar(request.form)
+    palabraSearch = ''
+    resultado = ''
+    idioma = ''
+
+    if request.method == "POST":
+        
+        palabraSearch = request.form.get("palabraSearch")
+        palabraSearch = palabraSearch.upper()
+        idioma = request.form.get("idioma")
+    
+
+        archivo = open('aTraducciones.txt', 'r')
+        idioma = request.form.get("idioma")
+        resultado = "Palabra no encontrada"
+        print(idioma)
+        print(palabraSearch)
+
+        if idioma == "Ingles":
+            lineas = archivo.readlines()  
+            for i in range(1, len(lineas)): 
+                if lineas[i].strip() == palabraSearch:
+                    resultado = lineas[i +-1].strip() 
+            print(resultado)
+        
+        if idioma == "Espanol":
+            lineas = archivo.readlines() 
+            for i in range(1, len(lineas)): 
+                if lineas[i].strip() == palabraSearch:
+                    resultado = lineas[i + 1].strip() 
+            print(resultado)
+
+    return render_template("Search.html", form = BuscarClass, palabraSearch = palabraSearch, idioma = idioma, resultado = resultado)
+
 
 
 @app.route("/resultado", methods=["GET","POST"])
